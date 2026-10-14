@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#2C466E">
+  <title>Голосовой навигатор по Москве</title>
+  <link rel="icon" type="image/png" href="favicon-64.png">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="app">
+    <section class="controls">
+      <header class="brand">
+        <span class="logo-plate"><img class="logo" src="logo.png" alt="" width="52" height="44"></span>
+        <h1>Голосовой навигатор по Москве</h1>
+      </header>
+
+      <p id="prompt">Назовите куда хотите попасть</p>
+
+      <button id="talk" type="button" aria-label="Говорить. Коснитесь экрана в любом месте и назовите, куда хотите попасть">Говорить</button>
+
+      <div id="status" aria-live="off">Коснитесь экрана в любом месте и назовите место.</div>
+
+      <details class="places">
+        <summary>Мои места<span id="placesCount"></span></summary>
+        <ul id="placeList" class="place-list"></ul>
+        <button id="placeAdd" type="button" class="wide">Сохранить место голосом</button>
+        <form id="placeForm" autocomplete="off">
+          <label for="placeName">Название</label>
+          <input id="placeName" class="field" type="text" maxlength="40" placeholder="Например: Дом">
+          <label for="placeAddr">Адрес (пусто: моё текущее местоположение)</label>
+          <input id="placeAddr" class="field" type="text" placeholder="Например: Тверская 10">
+          <button type="submit" class="wide">Сохранить</button>
+        </form>
+      </details>
+
+      <details class="alt">
+        <summary>Ввести адрес вручную</summary>
+        <form id="textForm" autocomplete="off">
+          <label for="textInput">Адрес или название места</label>
+          <div class="row">
+            <input id="textInput" type="text" placeholder="Например: Красная площадь">
+            <button type="submit">Найти</button>
+          </div>
+        </form>
+      </details>
+
+      <p class="note">Навигатор помогает с маршрутом, но не заменяет трость или собаку-проводника.
+        Дороги переходите только в обозначенных местах.</p>
+    </section>
+
+    <div id="map" role="img" aria-label="Карта Москвы с построенным маршрутом"></div>
+  </main>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
